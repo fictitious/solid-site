@@ -4,6 +4,7 @@ import { VitePWA, Options as VitePWAOptions } from 'vite-plugin-pwa';
 import manifest from './src/assets/manifest.json';
 import mdx from '@mdx-js/rollup';
 import remarkGfm from 'remark-gfm';
+import * as pf from 'path';
 
 const pwaOptions: Partial<VitePWAOptions> = {
   registerType: 'autoUpdate',
@@ -73,9 +74,19 @@ export default defineConfig({
     solid({ extensions: ['.md', '.mdx'] }),
     // VitePWA(pwaOptions),
   ],
+  resolve: {
+    conditions: ['solid-sources'],
+    alias: {
+      'rxcore': pf.resolve(__dirname, '../solid/packages/solid/web/src/core.ts')
+    }
+  },
   optimizeDeps: {
     include: [],
-    exclude: ['@solid.js/docs'],
+    exclude: [
+      '@solid.js/docs',
+      'solid-js',
+      'solid-app-router',
+    ],
   },
   build: {
     polyfillDynamicImport: false,
