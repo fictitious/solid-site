@@ -6,6 +6,7 @@ import mdx from '@mdx-js/rollup';
 import remarkGfm from 'remark-gfm';
 import remarkOembed from 'remark-oembed';
 import remarkHtml from 'remark-html';
+import * as pf from 'path';
 
 const pwaOptions: Partial<VitePWAOptions> = {
   registerType: 'autoUpdate',
@@ -70,9 +71,19 @@ export default defineConfig({
     solid(),
     // VitePWA(pwaOptions),
   ],
+  resolve: {
+    conditions: ['solid-sources'],
+    alias: {
+      'rxcore': pf.resolve(__dirname, '../solid/packages/solid/web/src/core.ts')
+    }
+  },
   optimizeDeps: {
     include: [],
-    exclude: ['@solid.js/docs'],
+    exclude: [
+      '@solid.js/docs',
+      'solid-js',
+      'solid-app-router',
+    ],
   },
   build: {
     polyfillDynamicImport: false,
