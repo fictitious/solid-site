@@ -23,10 +23,10 @@ const ScrollShadow: Component<
   let shadowFirstEl!: HTMLElement;
   let shadowLastEl!: HTMLElement;
   let sentinelFirstEl = (
-    <Sentinel child="first" direction={direction} rtl={props.rtl} />
+    <Sentinel $NoHMR child="first" direction={direction} rtl={props.rtl} />
   ) as HTMLElement;
   let sentinelLastEl = (
-    <Sentinel child="last" direction={direction} rtl={props.rtl} />
+    <Sentinel $NoHMR child="last" direction={direction} rtl={props.rtl} />
   ) as HTMLElement;
   let init = true;
   let initResetSize = false;
