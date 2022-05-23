@@ -70,16 +70,19 @@ export default defineConfig({
       }),
       enforce: 'pre',
     },
-    solid({ extensions: ['.md', '.mdx'] }),
+    solid({ extensions: ['.md', '.mdx'], hot: false }),
     // VitePWA(pwaOptions),
   ],
   optimizeDeps: {
-    include: [],
+    include: ['babel-preset-solid', 'babel-plugin-jsx-dom-expressions', '@babel/helper-module-imports'],
     exclude: ['@solid.js/docs'],
   },
   build: {
     polyfillDynamicImport: false,
     target: 'esnext',
+    commonjsOptions: {
+      include: [/babel-preset-solid/, /babel-plugin-jsx-dom-expressions/, /@babel\/helper-module-imports/, /node_modules/]
+    },
     terserOptions: {
       compress: {
         unsafe: true,

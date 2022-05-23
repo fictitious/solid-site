@@ -30,6 +30,7 @@
     "@solid-primitives/storage": "^1.1.1",
     "@solid-primitives/throttle": "^1.1.2",
     "@solid.js/docs": "^1.0.38",
+    "babel-plugin-jsx-dom-expressions": "^0.33.7",
     "fuse.js": "^6.5.3",
     "highlight.js": "^11.5.0",
     "monaco-editor": "0.31.1",
